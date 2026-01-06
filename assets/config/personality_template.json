@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "templates": {
+    "title": "{sub.prefix} {main.label}",
+    "sections": [
+      {
+        "key": "headline",
+        "title": "あなたの恋愛タイプ",
+        "body": ["{main.core}"]
+      },
+      {
+        "key": "sub_nuance",
+        "title": "性格のニュアンス",
+        "body": ["{sub.nuance}"]
+      },
+      {
+        "key": "love_pattern",
+        "title": "恋愛行動パターン",
+        "body": ["{main.love_pattern}"]
+      },
+      {
+        "key": "strength",
+        "title": "強み",
+        "body": ["{main.strength}"]
+      },
+      {
+        "key": "weakness",
+        "title": "注意点",
+        "body": ["{main.weakness}", "{main.pitfall}"]
+      },
+      {
+        "key": "best_match",
+        "title": "相性が良い相手",
+        "body": ["{main.best_match}"]
+      },
+      {
+        "key": "keywords",
+        "title": "キーワード",
+        "body": ["{main.keywords}", "{sub.tone_tags}"]
+      }
+    ]
+  }
+}

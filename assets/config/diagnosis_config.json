@@ -1,0 +1,277 @@
+{
+  "version": "1.0.0",
+  "_note": "Dango Love Diagnosis - full config: sub (Q1-10) + main (Q11-20) + tie-break + rarity rules",
+
+  "types": {
+    "main": [
+      { "id": "mitarashi", "label": "みたらし団子", "tagline": "甘え上手×やさしい", "short": "癒し属性" },
+      { "id": "anko", "label": "あんこ団子", "tagline": "一途×誠実", "short": "忠実属性" },
+      { "id": "goma", "label": "ごま団子", "tagline": "理性的×大人", "short": "冷静分析タイプ" },
+      { "id": "sanshoku", "label": "三色団子", "tagline": "外向的×社交的", "short": "ムードメーカー" },
+      { "id": "zunda", "label": "ずんだ団子", "tagline": "個性派×自由", "short": "唯一無二タイプ" },
+      { "id": "yomogi", "label": "よもぎ団子", "tagline": "安定×調和", "short": "安心タイプ" },
+      { "id": "kinako", "label": "きなこ団子", "tagline": "ふんわり×繊細", "short": "やさしいタイプ" },
+      { "id": "sakura", "label": "さくら団子", "tagline": "ロマンチック×感性", "short": "ロマン派" }
+    ],
+    "sub": {
+      "single": {
+        "A": {
+          "base": { "id": "A-01", "label": "ふんわり" },
+          "rare": [
+            { "id": "A-02", "label": "やわもちの" },
+            { "id": "A-03", "label": "ぽよぽよした" }
+          ]
+        },
+        "B": {
+          "base": { "id": "B-01", "label": "パーリーナイトで出てくる" },
+          "rare": [
+            { "id": "B-02", "label": "キラッキラの" },
+            { "id": "B-03", "label": "お祭り会場から抜け出してきた" }
+          ]
+        },
+        "C": {
+          "base": { "id": "C-01", "label": "ちょっぴり硬めの" },
+          "rare": [
+            { "id": "C-02", "label": "職人仕上げの均一な" },
+            { "id": "C-03", "label": "石畳の上で冷えて固まった" }
+          ]
+        },
+        "D": {
+          "base": { "id": "D-01", "label": "恋に焦がれる" },
+          "rare": [
+            { "id": "D-02", "label": "正義の" },
+            { "id": "D-03", "label": "月夜に照らされた" }
+          ]
+        }
+      },
+
+      "pairs": {
+        "AB": {
+          "base": { "id": "AB-01", "label": "やさしめパリピの" },
+          "rare": [{ "id": "AB-02", "label": "陽だまりで踊り出す" }]
+        },
+        "AC": {
+          "base": { "id": "AC-01", "label": "暖かい縁側に置きっぱなしの" },
+          "rare": [{ "id": "AC-02", "label": "しっとり落ち着いた" }]
+        },
+        "AD": {
+          "base": { "id": "AD-01", "label": "そよ風みたいに恋する" },
+          "rare": [{ "id": "AD-02", "label": "春の日差しと共に舞い降りた" }]
+        },
+        "BC": {
+          "base": { "id": "BC-01", "label": "騒がしいのに妙に整ってる" },
+          "rare": [{ "id": "BC-02", "label": "冷静ツッコミ系パーリー" }]
+        },
+        "BD": {
+          "base": { "id": "BD-01", "label": "流れ星を追いかける" },
+          "rare": [{ "id": "BD-02", "label": "胸がキラめく陽キャロマンの" }]
+        },
+        "CD": {
+          "base": { "id": "CD-01", "label": "静かに燃える芯のある" },
+          "rare": [{ "id": "CD-02", "label": "凛として恋を語る" }]
+        }
+      },
+
+      "tri_ex": {
+        "ABC": { "id": "ABC-EX", "label": "ふんわり賢いパーティー帰りの" },
+        "ABD": { "id": "ABD-EX", "label": "全方向に甘くて眩しい" },
+        "ACD": { "id": "ACD-EX", "label": "静けさの中で夢見るしなやかな" },
+        "BCD": { "id": "BCD-EX", "label": "眩しさを秘めたドラマチック理性" }
+      }
+    }
+  },
+
+  "rng": {
+    "_note": "If you want stable results per user+answers, compute r from hash(answer_string). Otherwise use Math.random().",
+    "mode": "hash_or_random",
+    "hash_key_salt": "dango-love-v1"
+  },
+
+  "rarity": {
+    "sub": {
+      "_note": "Within chosen pattern, pick base vs rare. single uses 86/14, pairs uses 90/10, tri_ex is fixed.",
+      "single_base_prob": 0.86,
+      "pair_base_prob": 0.90,
+      "rare_distribution_mode": "even",
+      "_note_rare_distribution": "even = split rare probability equally among rare labels; you can change to weighted in rarity_overrides."
+    },
+    "rarity_overrides": {
+      "_note": "Optional per-pattern weights. If absent, use even split among rare labels.",
+      "single": {
+        "A": { "base": 0.86, "rare": [{ "id": "A-02", "p": 0.08 }, { "id": "A-03", "p": 0.06 }] },
+        "B": { "base": 0.86, "rare": [{ "id": "B-02", "p": 0.07 }, { "id": "B-03", "p": 0.07 }] },
+        "C": { "base": 0.86, "rare": [{ "id": "C-02", "p": 0.08 }, { "id": "C-03", "p": 0.06 }] },
+        "D": { "base": 0.86, "rare": [{ "id": "D-02", "p": 0.07 }, { "id": "D-03", "p": 0.07 }] }
+      },
+      "pairs": {
+        "AB": { "base": 0.90, "rare": [{ "id": "AB-02", "p": 0.10 }] },
+        "AC": { "base": 0.90, "rare": [{ "id": "AC-02", "p": 0.10 }] },
+        "AD": { "base": 0.90, "rare": [{ "id": "AD-02", "p": 0.10 }] },
+        "BC": { "base": 0.90, "rare": [{ "id": "BC-02", "p": 0.10 }] },
+        "BD": { "base": 0.90, "rare": [{ "id": "BD-02", "p": 0.10 }] },
+        "CD": { "base": 0.90, "rare": [{ "id": "CD-02", "p": 0.10 }] }
+      }
+    }
+  },
+
+  "scoring": {
+    "sub": {
+      "_note": "Q1-10 are A/B/C/D. We count picks to a,b,c,d.",
+      "questions_range": [1, 10],
+      "count_keys": ["A", "B", "C", "D"],
+
+      "pattern_rules": {
+        "_note": "Determine tri_ex first, then single, else pair of top2.",
+        "tri_ex": {
+          "enabled": true,
+          "top3_min": 3,
+          "top3_max": 4,
+          "s1_minus_s3_max": 1,
+          "top3_sum_min": 9
+        },
+        "single": {
+          "enabled": true,
+          "rule_any_of": [
+            { "s1_min": 7, "s1_minus_s2_min": 2 },
+            { "s1_min": 6, "s1_minus_s2_min": 3 }
+          ]
+        },
+        "pair": {
+          "enabled": true,
+          "top2_min": 3,
+          "s1_minus_s2_max": 2,
+          "_note_pair": "If single/tri_ex not satisfied, use top2 keys as pair."
+        }
+      }
+    },
+
+    "main": {
+      "_note": "Q11-20. Each option adds points to 1-3 types (mostly 1-2). Highest score wins; tie breaks by priority list.",
+      "questions_range": [11, 20],
+
+      "tie_break_priority": [
+        "sakura",
+        "mitarashi",
+        "anko",
+        "kinako",
+        "yomogi",
+        "goma",
+        "sanshoku",
+        "zunda"
+      ],
+
+      "questions": [
+        {
+          "id": 11,
+          "text": "恋愛の始まり方として、一番しっくりくるのは？",
+          "choices": {
+            "A": { "text": "ゆっくり距離をつめたい", "add": { "goma": 1, "yomogi": 1 } },
+            "B": { "text": "直感で「いいかも」と思ったら動きたい", "add": { "sakura": 1, "sanshoku": 1 } },
+            "C": { "text": "相手から来てほしい", "add": { "mitarashi": 1, "kinako": 1 } },
+            "D": { "text": "気ままに、自然に始まるのが一番", "add": { "zunda": 1 } }
+          }
+        },
+        {
+          "id": 12,
+          "text": "デートのプランで、一番テンション上がるのは？",
+          "choices": {
+            "A": { "text": "おうちや公園でまったりデート", "add": { "mitarashi": 1, "yomogi": 1 } },
+            "B": { "text": "テーマパークやイベントなどアクティブ系", "add": { "sanshoku": 1, "zunda": 1 } },
+            "C": { "text": "落ち着いたカフェや本屋デート", "add": { "goma": 1, "anko": 1 } },
+            "D": { "text": "ちょっと冒険感のある場所（知らない街、夜景スポットなど）", "add": { "zunda": 1, "sakura": 1 } }
+          }
+        },
+        {
+          "id": 13,
+          "text": "付き合うなら、どんなタイプの人が理想？",
+          "choices": {
+            "A": { "text": "とにかく優しい人", "add": { "mitarashi": 1, "kinako": 1 } },
+            "B": { "text": "明るくて一緒にいて楽しい人", "add": { "sanshoku": 1 } },
+            "C": { "text": "しっかりしていて頼れる人", "add": { "goma": 1, "yomogi": 1, "anko": 1 } },
+            "D": { "text": "ちょっと危ういけど刺激的な人", "add": { "zunda": 1, "sakura": 1 } }
+          }
+        },
+        {
+          "id": 14,
+          "text": "落ち込んだとき、いちばん「やりがち」なのは？",
+          "choices": {
+            "A": { "text": "誰かにそっと甘えたくなる", "add": { "mitarashi": 1, "kinako": 1 } },
+            "B": { "text": "友達と話して笑って忘れたい", "add": { "sanshoku": 1, "zunda": 1 } },
+            "C": { "text": "1人で静かに整理したい", "add": { "goma": 1, "anko": 1 } },
+            "D": { "text": "どこか遠くへ行きたくなる", "add": { "zunda": 1, "sakura": 1 } }
+          }
+        },
+        {
+          "id": 15,
+          "text": "あなたの恋愛の進み方に近いのは？",
+          "choices": {
+            "A": { "text": "じっくり時間をかけたい", "add": { "goma": 1, "yomogi": 1, "anko": 1 } },
+            "B": { "text": "いい感じならサクッと距離を縮めたい", "add": { "sanshoku": 1, "sakura": 1 } },
+            "C": { "text": "基本は相手のペースに合わせる", "add": { "mitarashi": 1, "kinako": 1 } },
+            "D": { "text": "そのときの気分とノリ次第", "add": { "zunda": 1 } }
+          }
+        },
+        {
+          "id": 16,
+          "text": "恋人との連絡頻度、理想はどれ？",
+          "choices": {
+            "A": { "text": "毎日ちゃんとやりとりしたい", "add": { "mitarashi": 1, "kinako": 1 } },
+            "B": { "text": "お互い無理のないペースで、適度に", "add": { "sanshoku": 1, "yomogi": 1 } },
+            "C": { "text": "用事があるときに連絡するくらいでいい", "add": { "goma": 1, "anko": 1 } },
+            "D": { "text": "気分で送りたいときだけでOK", "add": { "zunda": 1, "sakura": 1 } }
+          }
+        },
+        {
+          "id": 17,
+          "text": "恋愛って、あなたにとって一番何が大事？",
+          "choices": {
+            "A": { "text": "安心感と居心地のよさ", "add": { "yomogi": 1, "mitarashi": 1 } },
+            "B": { "text": "一緒にいて楽しいこと", "add": { "sanshoku": 1, "zunda": 1 } },
+            "C": { "text": "お互いが成長し合えること", "add": { "goma": 1, "anko": 1, "sakura": 1 } },
+            "D": { "text": "自由さ・自分らしさを失わないこと", "add": { "zunda": 1 } }
+          }
+        },
+        {
+          "id": 18,
+          "text": "ちょっと嫉妬しちゃったとき、どうなりがち？",
+          "choices": {
+            "A": { "text": "黙ってモヤモヤする", "add": { "kinako": 1, "mitarashi": 1 } },
+            "B": { "text": "冗談っぽくツッコむ・態度に出る", "add": { "sanshoku": 1 } },
+            "C": { "text": "状況を冷静に整理しようとする", "add": { "goma": 1, "anko": 1 } },
+            "D": { "text": "距離をとったり、その場から離れたくなる", "add": { "zunda": 1, "sakura": 1 } }
+          }
+        },
+        {
+          "id": 19,
+          "text": "恋人に一番求めるものは？",
+          "choices": {
+            "A": { "text": "優しさ", "add": { "mitarashi": 1, "kinako": 1 } },
+            "B": { "text": "刺激・楽しさ", "add": { "sanshoku": 1, "zunda": 1 } },
+            "C": { "text": "安定感・頼もしさ", "add": { "yomogi": 1, "goma": 1, "anko": 1 } },
+            "D": { "text": "ドキドキするドラマチックさ", "add": { "sakura": 1 } }
+          }
+        },
+        {
+          "id": 20,
+          "text": "今のあなたにとって、恋愛を一言で言うなら？",
+          "choices": {
+            "A": { "text": "寄り添い合うもの", "add": { "mitarashi": 1, "yomogi": 1 } },
+            "B": { "text": "一緒に楽しむもの", "add": { "sanshoku": 1, "zunda": 1 } },
+            "C": { "text": "育てていくもの", "add": { "anko": 1, "goma": 1 } },
+            "D": { "text": "感じて、味わうもの", "add": { "sakura": 1, "kinako": 1 } }
+          }
+        }
+      ]
+    }
+  },
+
+  "rendering": {
+    "_note": "How to display final label.",
+    "final_name_template": "{sub_label}{main_label}タイプ",
+    "examples": [
+      "ふんわりさくら団子タイプ",
+      "恋に焦がれるみたらし団子タイプ",
+      "暖かい縁側に置きっぱなしのごま団子タイプ"
+    ]
+  }
+}
