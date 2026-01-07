@@ -1,7 +1,7 @@
 name: dango_fortune
 description: "恋愛だんご占い"
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ^3.10.4
@@ -18,6 +18,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1   # ← 追加
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"     # ← 使いたいアイコンをここに置く
 
 flutter:
   uses-material-design: true
