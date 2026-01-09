@@ -1,7 +1,7 @@
 name: dango_fortune
 description: "恋愛だんご占い"
 publish_to: "none"
-version: 1.0.0+2
+version: 1.0.0+3
 
 environment:
   sdk: ^3.10.4
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-
+  device_preview: ^1.1.0
   crypto: ^3.0.3
   shared_preferences: ^2.2.3
 
